@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Home
+{% endblock %}
+
+
+{% block content %}
+    <h1>Home page</h1>
+{% endblock %}
+
+{% block nav %}
+    <a href="{% url 'categoryPage' pk=1 %}"> Страница с категориями </a>
+    <a href="{% url 'tagsPage' %}"> Страница с Tags </a>
+    <a href="{% url 'productPage' pk=1 %}"> Страница с товаром </a>
+    <a href="{% url 'helpPage' %}"> Страница с с обратной связью </a>
+    <a href="{% url 'supplier_create_page' %}">Страница create supplier</a>
+{% endblock %}
+
+{% block content_info %}
+
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Создать категорию</button>
+        </form>
+    </div>
+{% endblock %}

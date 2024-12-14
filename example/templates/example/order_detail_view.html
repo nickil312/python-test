@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Order Page
+{% endblock %}
+
+
+{% block content %}
+    <h1>Order Page</h1>
+{% endblock %}
+
+{% block nav %}
+{#    <a href="{% url  %}" class="btn ">Изменить</a>#}
+{#    <a href="{% url  %}" class="btn btn-danger">Удалить</a>#}
+{% endblock %}
+
+
+{% block content_info %}
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="row row-cols-3">
+
+                <div class="col ">
+                    <h4>{{ order.order_number }}</h4>
+
+                    <h5>{{ order.created_at }}</h5>
+                    <h5>{{ order.delivery_address }}</h5>
+
+                    <h5>{{ order.client_phone }} </h5>
+                    <h5>{{ order.client_name }} </h5>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+
+({% block content %}
+    <h1>API main page</h1>
+{% endblock %})
+
+
+
+
+{% block nav %}
+    <a href="{% url 'API_get' id=1 %}"> Get</a>
+    <a href="{% url 'API_post' %}"> Post</a>
+    <a href="{% url 'API_delete' id=1 %}"> Delete</a>
+    <a href="{% url 'API_put' id=1 %}"> Put</a>
+{% endblock %}
+
+
+{% block title %}
+    API
+{% endblock %}

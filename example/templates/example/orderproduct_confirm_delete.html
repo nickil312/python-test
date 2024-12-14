@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Заказ на Продукты удален!!!
+{% endblock %}
+
+
+{% block content %}
+
+    <h1>Заказ на Продукты {{ orderproduct.order_number }} удален!!!</h1>
+   <div class="container">
+        <h1>Заказ на Продукты {{ orderproduct.order_number }} удален!!!</h1>
+        <h1>{{ orderproduct.delivery_address }} </h1>
+        <h1>{{ orderproduct.client_phone }} </h1>
+        <h1>{{ orderproduct.client_name }} </h1>
+    </div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Tags
+{% endblock %}
+
+
+{% block content %}
+    <h1>Tags page</h1>
+{% endblock %}
+
+{% block nav %}
+    <a href="{% url 'categoryPage' pk=1 %}"> Страница с категориями </a>
+    <a href="{% url 'helpPage' %}"> Страница с с обратной связью </a>
+    <a href="{% url 'tagsPageCreate' %}" class="btn">Страница create tags</a>
+    <a href="{% url 'supplier_create_page' %}">Страница create supplier</a>
+{% endblock %}
+
+{% block content_info %}
+    <div class="container">
+        <div class="row row-cols-auto">
+            {% for category in categories %}
+
+                <div class="col">
+                    <a href="{% url 'tagsPageDetail' pk=category.pk %}">
+                        <p style="font-size: 18px">{{ category.name }}</p>
+                    </a>
+                    <p style="font-size: 12px;">{{ category.description }}</p></div>
+
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block content_more_info %}
+
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+
+            {% endif %}
+
+            </li>
+            {% for page in paginator.page_range %}
+                {% if page_obj.number == page %}
+                    <li class="page-item active"><a class="page-link ">{{ page }}</a></li>
+                {% elif page_obj.number|add:"-1" <= page and page_obj.number|add:"2" >= p %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+
+                {% else %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endblock %}
+

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    category page
+{% endblock %}
+
+
+{% block content %}
+    <h1>category page {{ category }}</h1>
+{% endblock %}
+
+{% block nav %}
+    <a href="{% url 'addPage' %}"> Страница добавления </a>
+    <a href="{% url 'createCategory' %}"> Страница с создания категорий </a>
+
+{% endblock %}
+
+{% block content_info %}
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="row row-cols-3">
+                {% for data in product %}
+                    <div class="col">
+
+                        {% if data.image %}
+                            <img src="{{ data.image.url }}" style="width: 300px"/>
+                        {% else %}
+                            <p>Картинка не загрузилвсь</p>
+
+
+                        {% endif %}
+                        <h4>{{ data.name }}</h4>
+                        <h5>{{ data.price }} ₽</h5>
+{#                        <a href="{% url 'toy-detail' data.id %}">Detail сlass (на паре)</a>#}
+                        <a href="{% url 'productPage' data.id %}">Детальная информация</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

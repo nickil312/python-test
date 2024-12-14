@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Order Product form
+{% endblock %}
+
+
+{% block content %}
+
+    <h1>Order Product form page</h1>
+    <div class="container">
+
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_div }}
+            <button type="submit" class="btn btn-success">Add</button>
+        </form>
+    </div>
+{% endblock %}

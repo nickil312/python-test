@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>{{ supplier.company_name }}</h2>
+      <p>ФИО представителя: {{ supplier.representative_name }}</p>
+      <p>Имя представителя: {{ supplier.get_first_name }}</p>
+      <p>Отчество представителя: {{ supplier.get_middle_name }}</p>
+      <p>Телефон представителя: {{ supplier.representative_phone }}</p>
+      <p>Адрес: {{ supplier.address }}</p>
+      <h3>Список поставок:</h3>
+      <ul>
+        {% for delivery in supplier.deliveries.all %}
+          <li>
+            {{ delivery.delivery_number }} - Количество товаров: {{ delivery.deliveryitemkb_set.count }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block nav %}
+{% endblock %}
+{% block content_info %}
+{% endblock %}
+
+{% block content_more_info %}
+{% endblock %}

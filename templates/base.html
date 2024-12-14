@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            Название страницы
+        {% endblock %}
+    </title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body style="background-color: #cb3b3b" class="p-2">
+<div style="
+    margin-left: 20%;
+">
+    {% include 'djangoProject/inc/_header.html' %}
+</div>
+<div style="background-color: #ffffff">
+    {% block content %}
+        <h1>
+            я название страницы
+        </h1>
+    {% endblock %}
+    <div>
+        {#        <p>Навигация страницы</p>#}
+        <div style="margin-right: 124px;margin-left: 144px; padding: 2px;background-color: rgba(203,59,59,0.28);">
+            {% block nav %}
+                <p>
+                    Навигация топ
+                </p>
+            {% endblock %}
+        </div>
+        {% block content_info %}
+            <p>
+                контент
+            </p>
+        {% endblock %}
+        {% block content_more_info %}
+            <p>
+                Доп контент
+            </p>
+        {% endblock %}
+    </div>
+
+</div>
+{% include 'djangoProject/inc/_footer.html' %}
+
+</body>
+</html>

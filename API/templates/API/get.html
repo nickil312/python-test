@@ -1,0 +1,15 @@
+
+
+{% extends 'base.html' %}
+
+{% block title %}
+   API_get
+{% endblock %}
+
+
+{% block content %}
+    <h1>API get page</h1>
+    {% for data in id %}
+        <p>{{ data }}</p>
+    {% endfor %}
+{% endblock %}

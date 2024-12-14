@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Tags detail
+{% endblock %}
+
+
+{% block content %}
+    <h1>Tags Detail page</h1>
+{% endblock %}
+
+{% block nav %}
+    <a href="{% url 'categoryPage' pk=1 %}"> Страница с категориями </a>
+    <a href="{% url 'helpPage' %}"> Страница с с обратной связью </a>
+    <a href="{% url 'supplier_create_page' %}">Страница create supplier</a>
+{% endblock %}
+
+{#{% block content_info %}#}
+{#    <div class="container">#}
+{##}
+{#        <div class="row row-cols-auto">#}
+{##}
+{##}
+{#            <div class="col"><p>{{ cat.name }}</p></div>#}
+{#            <div class="col"><p>{{ product }}</p></div>#}
+{#            <div class="col"><p>{{ productmain.name }}</p></div>#}
+{#            <div class="col"><p>{{ cat.description }}</p></div>#}
+{##}
+{#        </div>#}
+{#    </div>#}
+{#{% endblock %}#}
+{% block content_info %}
+<div class="container">
+        <h2>{{ title }}</h2>
+        <div class="row row-cols-auto">
+            <h1>{{ cat.name }}</h1>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="row row-cols-3">
+                {% for data in product %}
+                    <div class="col">
+
+                        {% if data.image %}
+                            <img src="{{ data.image.url }}" style="width: 300px"/>
+                        {% else %}
+                            <p>Картинка не загрузилась</p>
+
+
+                        {% endif %}
+                        <h4>{{ data.name }}</h4>
+                        <h5>{{ data.price }} ₽</h5>
+{#                        <a href="{% url 'toy-detail' data.id %}">Detail сlass (на паре)</a>#}
+                        <a href="{% url 'productPage' data.id %}">Детальная информация тега</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

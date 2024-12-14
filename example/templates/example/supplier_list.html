@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    supplier list
+{% endblock %}
+{% block nav %}
+    <a href="{% url 'supplier_create_view' %}"> Страница создания </a>
+{% endblock %}
+
+{% block content %}
+    {% for data in object_list %}
+        <div class="col">
+            <h4>{{ data.name }}</h4>
+            <h5>{{ data.price }} ₽</h5>
+            <a href="{% url 'supplier_update_view' data.pk %}" class="btn ">Изменить</a>
+            <a href="{% url 'supplier_detail_view' data.pk %}" class="btn">Detail view</a>
+            <a href="{% url 'supplier_delete_view' data.pk %}" class="btn btn-danger">Detail delete get</a>
+            <form method="post" action="{% url 'supplier_delete_view' data.pk %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Delete Post</button>
+            </form>
+        </div>
+    {% endfor %}
+{% endblock %}

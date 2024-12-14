@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+      <a href="{% url 'add_supplier' %}" class="btn btn-primary">Добавить поставщика</a>
+
+  <div class="row">
+    {% for supplier in suppliers %}
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">{{ supplier.company_name }}</h2>
+          <p class="card-text">ФИО представителя: {{ supplier.representative_name }}</p>
+          <p class="card-text">Телефон представителя: {{ supplier.representative_phone }}</p>
+          <p class="card-text">Адрес: {{ supplier.address }}</p>
+          <a href="{% url 'supplier_detail' supplier.pk %}" class="btn btn-primary">Подробнее</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
+{% block nav %}
+{% endblock %}
+{% block content_info %}
+{% endblock %}
+
+{% block content_more_info %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Supplier detail
+{% endblock %}
+{% block content %}
+
+
+        <div class="col">
+            <h4>{{ object.name }}</h4>
+            <h5>{{ object.telephone }} ₽</h5>
+            <h5>{{ object.address }} ₽</h5>
+        </div>
+
+{% endblock %}

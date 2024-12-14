@@ -2,10 +2,33 @@ name: Check Style Code
 
 on:
   push:
-    
+    branches:
+      - new_branch
 
 
   pull_request:
+    # branches_ignore:
+    branches:
+      - new
 
 
 jobs:
+  checkstyle_project:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git clone repo
+        uses: actions/checkout@v2
+
+      - name: Set version Python
+        uses: actions/setup-python@v2
+        with: 
+          python-vesion: '3.12.3'
+
+      - name: Install dependencies
+        run: |
+          pip install flake8
+
+      - name: Run linter
+        run: |
+          flake8 .
